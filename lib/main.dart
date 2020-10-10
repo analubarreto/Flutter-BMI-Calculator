@@ -15,7 +15,7 @@ class BMICalculator extends StatelessWidget {
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21)
       ),
-      home: InputPage(title: 'Flutter Demo Home Page'),
+      home: InputPage(title: 'BMI Calculator'),
     );
   }
 }

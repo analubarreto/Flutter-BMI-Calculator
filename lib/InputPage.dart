@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'ReusableCard.dart';
+
 class InputPage extends StatefulWidget {
   InputPage({Key key, this.title}) : super(key: key);
 
@@ -16,9 +18,31 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI Calulator'),
       ),
-      body: Center (
-        child: Text('Body Text'),
-      ),
+      body: Column (
+        children: <Widget> [
+          Expanded(
+            child: Row (
+              children: <Widget>[
+                ReusableCard(bgColor: Color(0xFF1D1E33)),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row (
+              children: <Widget>[
+                ReusableCard(bgColor: Color(0xFF1D1E33)),
+                ReusableCard(bgColor: Color(0xFF1D1E33)),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row (
+              children: <Widget>[
+                ReusableCard(bgColor: Color(0xFF1D1E33)),
+              ],
+            )
+          ),
+      ],)
     );
   }
 }
