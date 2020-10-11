@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../card/ReusableCard.dart';
 
+// Constants
 const bottomContainerHeight = 80.0;
 const cardBgColor = Color(0xFF1D1E33);
 const inactiveCardBgColor = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFEB1555);
+
+// Enums
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   InputPage({Key key, this.title}) : super(key: key);
@@ -16,31 +20,8 @@ class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
-
 class _InputPageState extends State<InputPage> {
-
-  Color maleCardColor = inactiveCardBgColor;
-  Color femaleCardColor = inactiveCardBgColor;
-
-  void updateColor(int gender) {
-    if (gender == 1) {
-      if (maleCardColor == inactiveCardBgColor) {
-        maleCardColor = cardBgColor;
-        femaleCardColor = inactiveCardBgColor;
-      } else {
-        maleCardColor = inactiveCardBgColor;
-      }
-    }
-
-    if (gender == 2) {
-      if (femaleCardColor == inactiveCardBgColor) {
-        femaleCardColor = cardBgColor;
-        maleCardColor = inactiveCardBgColor;
-      } else {
-        femaleCardColor = inactiveCardBgColor;
-      }
-    }
-  }
+  Gender selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -54,26 +35,26 @@ class _InputPageState extends State<InputPage> {
             child: Row (
               children: <Widget>[
                 ReusableCard(
-                  bgColor: maleCardColor,
+                  bgColor: selectedGender == Gender.male ? cardBgColor : inactiveCardBgColor,
                   cardChild: CardIcon(
                     iconImg: FontAwesomeIcons.mars,
                     iconText: 'MALE'
                   ),
                   onPress: () => {
                     setState(() => {
-                      updateColor(1),
+                      selectedGender = Gender.male,
                     })
                   },
                 ),
                 ReusableCard(
-                  bgColor: femaleCardColor,
+                  bgColor: selectedGender == Gender.female ? cardBgColor : inactiveCardBgColor,
                   cardChild: CardIcon(
                     iconImg: FontAwesomeIcons.venus,
                     iconText: 'FEMALE'
                   ),
                   onPress: () => {
                     setState(() => {
-                      updateColor(2),
+                      selectedGender = Gender.female,
                     })
                   },
                 ),
