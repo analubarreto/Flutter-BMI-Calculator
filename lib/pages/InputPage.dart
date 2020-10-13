@@ -1,4 +1,5 @@
 import 'package:bmi_calulator/card/CardIcon.dart';
+import 'package:bmi_calulator/card/RoundIconButton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../card/ReusableCard.dart';
@@ -18,7 +19,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
-
+  int weight = 60;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +112,44 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row (
               children: <Widget>[
-                ReusableCard(bgColor: kCardBgColor),
+                ReusableCard(
+                  bgColor: kCardBgColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'WEIGHT',
+                        style: kLabelTextStyle
+                      ),
+                      Text(
+                        weight.toString(),
+                        style: kNumberStyle
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: () => {
+                              setState(() => {
+                                weight -= 1
+                              })
+                            },
+                          ),
+                          SizedBox(width: 10.0),
+                         RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            onPressed: () => {
+                              setState(() => {
+                                weight += 1
+                              })
+                            },
+                          ),
+                        ],
+                      )
+                    ]
+                  )
+                ),
                 ReusableCard(bgColor: kCardBgColor),
               ],
             )
