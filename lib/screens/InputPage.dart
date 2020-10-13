@@ -1,5 +1,6 @@
 import 'package:bmi_calulator/card/CardIcon.dart';
 import 'package:bmi_calulator/card/RoundIconButton.dart';
+import 'package:bmi_calulator/screens/ResultPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../card/ReusableCard.dart';
@@ -192,11 +193,25 @@ class _InputPageState extends State<InputPage> {
               ],
             )
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
+          GestureDetector(
+            onTap: () => {
+              Navigator.pushNamed(context, '/results')
+            },
+            child: Container(
+              color: kBottomContainerColor,
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: kBottomContainerHeight,
+              child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'CALCULATE YOUR BMI',
+                  )
+                ],
+              ),
+            ),
           )
         ],
       ),
