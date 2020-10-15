@@ -1,10 +1,10 @@
-import 'package:bmi_calulator/card/CardIcon.dart';
-import 'package:bmi_calulator/card/RoundIconButton.dart';
-import 'package:bmi_calulator/screens/ResultPage.dart';
+import 'package:bmi_calulator/components/ButtonButton.dart';
+import 'package:bmi_calulator/components/card/CardIcon.dart';
+import 'package:bmi_calulator/components/card/RoundIconButton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../card/ReusableCard.dart';
-import '../card/constants/cardStyles.dart';
+import '../components/card/ReusableCard.dart';
+import '../components/card/constants/cardStyles.dart';
 
 // Enums
 enum Gender { male, female }
@@ -193,25 +193,11 @@ class _InputPageState extends State<InputPage> {
               ],
             )
           ),
-          GestureDetector(
+          BottomButton(
             onTap: () => {
               Navigator.pushNamed(context, '/results')
             },
-            child: Container(
-              color: kBottomContainerColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-              child:
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'CALCULATE YOUR BMI',
-                  )
-                ],
-              ),
-            ),
+            buttonTitle: 'CALCULATE',
           )
         ],
       ),
